@@ -62,6 +62,49 @@ class Graph:
 
         return distances
 
+    def prim(self):
+
+        mst = []
+
+        visited = set()
+
+        start = list(self.graph.keys())[0]
+
+        visited.add(start)
+
+        edges = []
+
+        for neighbor, weight in self.graph[start]:
+            heapq.heappush(
+                edges,
+                (weight, start, neighbor)
+            )
+
+        while edges:
+
+            weight, source, destination = (
+                heapq.heappop(edges)
+            )
+
+            if destination in visited:
+                continue
+
+            visited.add(destination)
+
+            mst.append(
+                (source, destination, weight)
+            )
+
+            for neighbor, w in self.graph[destination]:
+
+                if neighbor not in visited:
+                    heapq.heappush(
+                        edges,
+                        (w, destination, neighbor)
+                    )
+
+        return mst
+
 
 # Test Code
 
@@ -83,3 +126,16 @@ result = g.dijkstra("Kathmandu")
 
 for city, distance in result.items():
     print(city, ":", distance)
+
+print("\nMinimum Spanning Tree:")
+
+mst = g.prim()
+
+for source, destination, weight in mst:
+    print(
+        source,
+        "->",
+        destination,
+        ":",
+        weight
+    )
