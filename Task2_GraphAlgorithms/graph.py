@@ -1,5 +1,6 @@
 import heapq
 
+
 class Graph:
     def __init__(self):
         self.graph = {}
@@ -105,6 +106,55 @@ class Graph:
 
         return mst
 
+    def bellman_ford(self, start):
+
+        distances = {
+            city: float('inf')
+            for city in self.graph
+        }
+
+        distances[start] = 0
+
+        vertices = len(self.graph)
+
+        for _ in range(vertices - 1):
+
+            for source in self.graph:
+
+                for destination, weight in self.graph[source]:
+
+                    if (
+                        distances[source] != float('inf')
+                        and distances[source] + weight
+                        < distances.get(
+                            destination,
+                            float('inf')
+                        )
+                    ):
+
+                        distances[destination] = (
+                            distances[source]
+                            + weight
+                        )
+
+        for source in self.graph:
+
+            for destination, weight in self.graph[source]:
+
+                if (
+                    distances[source] != float('inf')
+                    and distances[source] + weight
+                    < distances.get(
+                        destination,
+                        float('inf')
+                    )
+                ):
+
+                    print("Negative cycle detected!")
+                    return None
+
+        return distances
+
 
 # Test Code
 
@@ -139,3 +189,16 @@ for source, destination, weight in mst:
         ":",
         weight
     )
+
+print("\nBellman-Ford Shortest Paths:")
+
+bf_result = g.bellman_ford("Kathmandu")
+
+if bf_result:
+
+    for city, distance in bf_result.items():
+        print(
+            city,
+            ":",
+            distance
+        )
