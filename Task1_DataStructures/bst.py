@@ -56,22 +56,24 @@ class BST:
     
 
     
-# Test code starts here
-bst = BST()
+if __name__ == "__main__":
 
-bst.root = bst.insert(bst.root, "Kathmandu", 1400000)
-bst.root = bst.insert(bst.root, "Pokhara", 600000)
-bst.root = bst.insert(bst.root, "Butwal", 200000)
+    bst = BST()
 
-print("Cities inserted successfully!")
+    bst.root = bst.insert(bst.root, "Kathmandu", 1400000)
+    bst.root = bst.insert(bst.root, "Pokhara", 600000)
+    bst.root = bst.insert(bst.root, "Butwal", 200000)
 
-result = bst.search(bst.root, "Pokhara")
+    print("Cities inserted successfully!")
 
-if result:
-    print(f"Found: {result.city_name}")
-    print(f"Population: {result.population}")
-else:
-    print("City not found")
+    result = bst.search(bst.root, "Pokhara")
+
+    if result:
+        print(f"Found: {result.city_name}")
+        print(f"Population: {result.population}")
+    else:
+        print("City not found")
+
     print("\nAll Cities:")
 
-bst.inorder(bst.root)
+    bst.inorder(bst.root)

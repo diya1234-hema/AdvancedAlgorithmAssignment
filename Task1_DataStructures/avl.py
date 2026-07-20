@@ -121,14 +121,16 @@ class AVLTree:
 
 
 # Test Code
-avl = AVLTree()
+if __name__ == "__main__":
 
-avl.root = avl.insert(avl.root, "Kathmandu", 1400000)
-avl.root = avl.insert(avl.root, "Pokhara", 600000)
-avl.root = avl.insert(avl.root, "Butwal", 200000)
-avl.root = avl.insert(avl.root, "Lalitpur", 300000)
-avl.root = avl.insert(avl.root, "Biratnagar", 250000)
+    avl = AVLTree()
 
-print("AVL Tree Cities:")
+    avl.root = avl.insert(avl.root, "Kathmandu", 1400000)
+    avl.root = avl.insert(avl.root, "Pokhara", 600000)
+    avl.root = avl.insert(avl.root, "Butwal", 200000)
+    avl.root = avl.insert(avl.root, "Lalitpur", 300000)
+    avl.root = avl.insert(avl.root, "Biratnagar", 250000)
 
-avl.inorder(avl.root)
+    print("AVL Tree Cities:")
+
+    avl.inorder(avl.root)

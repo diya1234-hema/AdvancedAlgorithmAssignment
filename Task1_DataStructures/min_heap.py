@@ -14,14 +14,20 @@ class MinHeap:
         return heapq.heappop(self.heap)
 heap = MinHeap()
 
-heap.insert(200, "Pokhara")
-heap.insert(0, "Kathmandu")
-heap.insert(250, "Butwal")
+if __name__ == "__main__":
 
-print("Heap Contents:")
-print(heap.heap)
+    heap = MinHeap()
 
-next_city = heap.get_next_city()
+    heap.insert(200, "Pokhara")
+    heap.insert(0, "Kathmandu")
+    heap.insert(250, "Butwal")
 
-print("\nNext City to Visit:")
-print(next_city)
+    print("Heap Contents:")
+
+    print(heap.heap)
+
+    next_city = heap.get_next_city()
+
+    print("\nNext City to Visit:")
+
+    print(next_city)

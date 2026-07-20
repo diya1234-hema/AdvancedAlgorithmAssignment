@@ -7,11 +7,14 @@ class HashTable:
 
     def search(self, city_name):
         return self.table.get(city_name)
-hash_table = HashTable()
+if __name__ == "__main__":
 
-hash_table.insert("Kathmandu", 1400000)
-hash_table.insert("Pokhara", 600000)
-hash_table.insert("Butwal", 200000)
+    hash_table = HashTable()
 
-print("Population of Pokhara:")
-print(hash_table.search("Pokhara"))
+    hash_table.insert("Kathmandu", 1400000)
+    hash_table.insert("Pokhara", 600000)
+    hash_table.insert("Butwal", 200000)
+
+    print("Population of Pokhara:")
+
+    print(hash_table.search("Pokhara"))
